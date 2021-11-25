@@ -37,3 +37,5 @@ browserify-simple : 단순히 browserify와 vuetify를 포함하는 template. �
 simple : 가장단순하게 html파일에 vue 설정만 가짐
 
 project name -> 소문자
+
+test
