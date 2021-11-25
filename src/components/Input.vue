@@ -1,12 +1,26 @@
 <template>
 <div>
-    <input type="text" />
-    <button>Submit</button>
+    <input type="text" v-model="input"/>
+    <button type="button" @click="getData">Submit</button>
+    <button type="button" @click="setData">Set</button>
 </div>
 </template>
 
 <script>
 export default{
+    data () {
+        return {
+            input: "dd",
+        };
+    },
+    methods: {
+        getData() {
+            alert(this.input);
+        },
+        setData() {
+            this.input = "12345"
+        }
+    }
 }
 </script>
 
