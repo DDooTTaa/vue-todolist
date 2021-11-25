@@ -2,17 +2,15 @@
   <div id="app">
     <Header />
     <Input />
-    <Button />
   </div>
 </template>
 
 <script>
 import Header from './components/Header.vue'
 import Input from './components/Input.vue'
-import Button from './components/Submit.vue'
 
 export default {
-  components: { Header, Input, Button },
+  components: { Header, Input },
   name: 'app', 
   data () {
     return {
