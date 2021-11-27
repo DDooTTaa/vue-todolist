@@ -1,22 +1,21 @@
 <template>
   <div id="app">
-    <Header />
-    <Input />
+    <section class="todoapp">
+      <Header/>
+      <Todo/>
+    </section>
   </div>
 </template>
 
 <script>
-import Header from './components/Header.vue'
-import Input from './components/Input.vue'
-
+import Header from "./components/Header";
+import Todo from "./components/Todo";
 export default {
-  components: { Header, Input },
-  name: 'app', 
-  data () {
-    return {
-    }
+  components: {
+    Header,
+    Todo
   }
-}
+};
 </script>
 
 
