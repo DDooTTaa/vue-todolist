@@ -1,19 +1,29 @@
 <template>
-<div>
   <header class="header">
     <h1>todos</h1>
-    <input class="new-todo" autofocus autocomplete="off" placeholder="What needs to be done?">
+    <input
+      placeholder="할일읍 입력해주세요"
+      v-model="todo"
+      @keypress="setTodo"
+    />
   </header>
-  </div>
 </template>
-
 <script>
-export default{
-}
+export default {
+  data() {
+    return {
+      todo: ""
+    };
+  },
+  methods: {
+    setTodo({ keyCode }) {
+      const todo = this.todo;
+// const { todo } = this;
+      if (todo !== "") {
+        this.$emit("insertTodo", todo);
+        this.todo = "";
+      }
+    },
+  }
+};
 </script>
-
-<style scoped>
-h1 {
-    background: burlywood;
-}
-</style>
