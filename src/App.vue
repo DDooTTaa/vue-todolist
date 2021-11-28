@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <section class="todoapp">
-      <Header @insertTodo="insertTodo" />
+      <Header @insert="insertTodo" />
       <button v-on:click="destroyAll">전체 삭제</button>
       <body-list :todos="todos" />
     </section>
@@ -23,17 +23,16 @@ export default {
   methods: {
     insertTodo(text) {
       this.todos = [
-        ...this.todos, // 기존의 배열에 새로운 todo 를 추가합니다.
+        ...this.todos, // 기존의 배열에 새로운 todo 를 추가.
          {
-          // id의 경우 같은 포맷을 유지하기 때문에 새로 받지 않습니다. 
-          id: new Date().getTime(), 
-          text, // 유동적인 text 값만 받습니다.
+          id: new Date().getTime(),
+          text // 현재 입력된 text 값을 todos 에 저장
         }
       ];
     },
     destroyAll() {
       console.log("dadada");
-        this.todos.splice(0);
+        this.todos = [];
     }
 
   }
