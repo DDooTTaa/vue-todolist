@@ -32,7 +32,7 @@ export default {
       ];
     },
     destroyAll() {
-      console.log("딜리트되나?");
+      console.log("dadada");
         this.todos.splice(0);
     }
 
