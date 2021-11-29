@@ -6,11 +6,15 @@
 <script>
 export default {
   name: "Delete",
-  methods: {
-    updateTodo(event) {
-      const list = event.target.parentElement;
-    }
+  props: {
+    todos: { type: Array, default: () => [] }
   },
+  methods: {
+    updateTodo() {
+      const { todos } = this;
+      console.log(todos);
+    }
+  }
 }
 </script>
 
