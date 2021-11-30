@@ -46,8 +46,6 @@ project name -> 소문자
   *단점: 리소스 낭비가 심하다.
 
 ##설계대로 작업했을 경우 문제점
- 상위 컴포넌트와 하위 컴포넌트의 데이터 전달 방법은 props 와 $emit 이다. 여기서 $emit 은 하위 컴포넌트에서 상위 컴포넌트로 데이터를
- 전달하는데 vue의 단방향 데이터 흐름에 어긋나니 사용을 지양해야 한다고 한다. -> vuex 를 통한 State Manage 필요
 
 ---
 
@@ -58,4 +56,24 @@ project name -> 소문자
 -- destroyAll() 메소드와 insertTodo() 메소드를 Header 에서 정의하는 것보다 App 에서 정의하는 게 괜찮다 판단
  ※ todos 변수를 Bodylist 변수에 전달해야 하기 때문
 
---Delete 컴포넌트는 변수를 선언하지 않고 event.target.parentElement.remove() 를 통해 html 요소로 접근해서 지움
+--Delete 컴포넌트는 변수를 통해 지우지 않고 event.target.parentElement.remove() 를 통해 HTML 상위 태그를 이용해서 지움
+
+
+##Vue 정리
+
+-- vue
+
+Computed 와 Watch
+
+Watch -> 명령형 프로그램
+Computed -> 선언형 프로그램
+https://v3.ko.vuejs.org/guide/computed.html#computed-%E1%84%89%E1%85%A9%E1%86%A8%E1%84%89%E1%85%A5%E1%86%BC%E1%84%8B%E1%85%B4-setter
+
+
+상위 컴포넌트와 하위 컴포넌트의 데이터 전달 방법 props 와 $emit,
+$emit 은 하위 컴포넌트에서 상위 컴포넌트로 데이터를 전달,
+vue의 단방향 데이터 흐름에 어긋나 사용을 지양. -> vuex 를 통한 State Manage 필요
+
+##코드 출처
+
+https://simplevue.gitbook.io

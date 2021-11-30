@@ -12,7 +12,8 @@
   "dependencies": {
     "csurf": "^1.11.0",
     "lodash.uniqueid": "^4.0.1",
-    "vue": "^2.5.11"
+    "vue": "^2.5.11",
+    "vuex": "^3.6.2"
   },
   "browserslist": [
     "> 1%",
