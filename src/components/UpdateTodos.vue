@@ -1,40 +1,47 @@
 <template>
   <div>
-    <input v-show="toggleUpdate" type="text" v-model="text" @keypress.enter="updateTodo"/>
-    <button v-show="!toggleUpdate" @click="updateTodo">수정</button>
+    <input v-show="toggleFlag" v-model="str" type="text" @keypress.enter="switchUpdate"/>
+    <button v-show="!toggleFlag" @click="switchToggle">수정</button>
   </div>
 </template>
 <script>
 export default {
-  data() {
-    return {
-      toggleUpdate: false,
-      arr: ""
-    }
-  },
   props: {
     text: {
       type: String,
-      default: ""
+      default: ''
     },
+    index: {
+      type: Number,
+      default: null
+    }
+  },
+  data() {
+    return {
+      toggleFlag: false,
+      str: ''
+    }
   },
   watch: {
     //watch로 props 를 변경한다.
     text: {
-      deep: true,
       immediate: true,
-      handler(arr) {
-        this.arr = arr;
+      handler(str) {
+        this.str = str;
       }
     },
   },
   methods: {
     //버튼과 input 박스를 스위치한다.
-    updateTodo() {
-      this.toggleUpdate = !this.toggleUpdate;
+    switchUpdate() {
+      this.$emit('updateList', this.str, this.index);
+      this.switchToggle();
+    },
+    switchToggle() {
+      this.toggleFlag = !this.toggleFlag;
     },
   },
-}
+};
 </script>
 <style scoped>
 </style>

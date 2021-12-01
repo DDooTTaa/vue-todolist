@@ -1,8 +1,3 @@
-# vue-todolist
-
-> A Vue.js project
-
-## Build Setup
 
 ```bash
 # install dependencies
@@ -14,10 +9,6 @@ npm run dev
 # build for production with minification
 npm run build
 ```
-
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
-
----
 
 vue3 에서 vue2 로 바꾸는 방법
 
@@ -45,9 +36,6 @@ project name -> 소문자
   *장점: 저장이 가능하다
   *단점: 리소스 낭비가 심하다.
 
-##설계대로 작업했을 경우 문제점
-
----
 
 ##설계와 달라진 것들
 
@@ -67,14 +55,24 @@ v-bind 속성은 뷰 인스턴스의 데이터 속성을 해당 HTML 요소에 �
 v-on 속성은 해당 HTML 요소의 이벤트를 뷰 인스턴스의 로직과 연결할 때 사용한다.
 'v-model' 을 쓰면 양방향 바인딩이 된다.
 
--- 공식 문서에서는 한국어 입력을 다룰 때 v-bind 와 v-on 을 직접 연결해서 사용하는 것을 권고
+-- 공식 문서에서는 한국어 입력을 다룰 때 v-bind 와 v-on 을 연결해서 사용하는 것을 권고
 https://joshua1988.github.io/web-development/vuejs/v-model-usage/
+
+Object로 받았을 때 todos 바꾸기
+
+-> Object 의 요소로 접근해 바꾸면 양방향 바인딩이 됨
+
+Array로 받았을 때 todos 바꾸기
+
+-> Array의 요소로 접근 시 todos 의 값은 바뀌지 않고 Update 의 Input 값만 바뀐 상태로 저장됨
+-> emit 으로 부모 컴포넌트의 전달, v-model를 v-bind와 v-on으로 수정 후 작업 event.target 으로 시도해봄
 
 
 Computed 와 Watch
 
 Watch -> 명령형 프로그램
 Computed -> 선언형 프로그램
+
 https://v3.ko.vuejs.org/guide/computed.html#computed-%E1%84%89%E1%85%A9%E1%86%A8%E1%84%89%E1%85%A5%E1%86%BC%E1%84%8B%E1%85%B4-setter
 
 
@@ -84,7 +82,7 @@ vue의 단방향 데이터 흐름에 어긋나 사용을 지양. -> vuex 를 통
 
 ##코드 출처
 
-https://simplevue.gitbook.io
+https://simplevue.gitbook.io(참고만 함)
 
 
 ##온라인 강좌
