@@ -1,7 +1,7 @@
 <template>
   <div>
-    <input v-show="toggleFlag" v-model="str" type="text" @keypress.enter="switchUpdate"/>
-    <button v-show="!toggleFlag" @click="switchToggle">수정</button>
+    <input v-show="toggleFlag" v-model="str" type="text" @keypress.enter="updateList" @keyup.esc="outInput"/>
+    <button v-show="!toggleFlag" @click="modifyTodo">수정</button>
   </div>
 </template>
 <script>
@@ -19,7 +19,8 @@ export default {
   data() {
     return {
       toggleFlag: false,
-      str: ''
+      str: '',
+      eidt: ''
     }
   },
   watch: {
@@ -33,13 +34,23 @@ export default {
   },
   methods: {
     //버튼과 input 박스를 스위치한다.
-    switchUpdate() {
-      this.$emit('updateList', this.str, this.index);
-      this.switchToggle();
-    },
     switchToggle() {
       this.toggleFlag = !this.toggleFlag;
     },
+    //BodyList 로 str 과 index 보낸다
+    modifyTodo() {
+      this.switchToggle();
+      this.edit = this.str;
+    },
+    updateList() {
+      this.$emit('updateList', this.str, this.index);
+      this.switchToggle();
+    },
+    //ESC 눌렀을 때
+    outInput() {
+      this.switchToggle();
+      this.str = this.edit;
+    }
   },
 };
 </script>

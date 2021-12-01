@@ -37,15 +37,26 @@ project name -> 소문자
   *단점: 리소스 낭비가 심하다.
 
 
-##설계와 달라진 것들
+##설계와 달라진 것들 (추가 사항)
 
 -- setTodo 에 버튼보다 Keypress 를 이용해 엔터를 누를 경우 todo 를 추가하는 게 더 직관적이라는 생각이 들어 버튼 삭제
+    -> Keypress.enter 사용
 
 -- destroyAll() 메소드와 insertTodo() 메소드를 Header 에서 정의하는 것보다 App 에서 정의하는 게 괜찮다 판단
- ※ todos 변수를 Bodylist 변수에 전달해야 하기 때문
+ ※ todos 배열을 Bodylist 변수에 전달해야 하기 때문
 
 --Delete 컴포넌트는 변수를 통해 지우지 않고 event.target.parentElement.remove() 를 통해 HTML 상위 태그를 이용해서 지움
+    -> event target 안 쓰고 this.arr.splice(index, 1) 로 바꿈. BodyList에 저장
+    -> Delete는 컴포넌트가 아닌 메소드이기에 BodyList 에 추가
 
+--객체로 선언된 todos를 배열로 다시 바꿈
+
+-- props를 바꾸지 않고 watch로 데이터 관리 watch 는 후술
+
+--업데이트 인풋 박스가 바뀔 때마다 라벨도 따라 바뀌는 문제 해결 (Ref.현석)
+  -> v-model 에 양방향 바인딩으로 모델까지 끌고 가지 않고 엔터키가 눌릴 경우에 데이터 전달
+
+-- 업데이트 인풋 박스에서 ESC 를 누르면 input 데이터가 이전으로 돌아가도록 함 (구현 완료)
 
 ##Vue 정리
 
