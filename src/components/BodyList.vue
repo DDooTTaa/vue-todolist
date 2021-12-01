@@ -1,6 +1,7 @@
 <template>
-    <ul>
+    <ul class="Body">
       <li
+        class="todoList"
         v-for="(text, index) in todos"
         :key="index"
       >
@@ -25,15 +26,13 @@ export default {
   props: {
     todos: {
       type: Array,
-      default: () => []
+      default: []
     }
   },
   watch: {
     todos:{
       //deep = todos 배열 내부가 변경될 수 있도록 한다
       deep: true,
-      //immediate = 컴포넌트가 성성될 때 핸들러를 실행한다
-      immediate: true,
       handler(arr){
        this.arr = arr;
       }
@@ -45,8 +44,8 @@ export default {
       this.arr.splice(index, 1);
     },
     TodoConvert(text, index) {
-      console.log("??");
           if(this.arr[index] !== text) {
+            //index 위치의 원소 하나 삭제 * 1 없으면 뒤를 다 삭제한다.
             this.arr.splice(index, 1, text);
       }
     }
@@ -55,4 +54,20 @@ export default {
 </script>
 
 <style scoped>
+  li {
+    list-style:none;
+    padding-bottom: 1rem;
+  }
+  .todoList{
+    display: flex;
+  }
+  .Body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  label {
+    margin: 0px 2rem 0px 0px;
+  }
 </style>

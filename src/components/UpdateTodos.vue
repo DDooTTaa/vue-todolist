@@ -1,7 +1,7 @@
 <template>
   <div>
     <input v-show="toggleFlag" v-model="str" type="text" @keypress.enter="updateList" @keyup.esc="outInput"/>
-    <button v-show="!toggleFlag" @click="modifyTodo">수정</button>
+    <button v-show="!toggleFlag" @click="updateBtn">수정</button>
   </div>
 </template>
 <script>
@@ -20,7 +20,7 @@ export default {
     return {
       toggleFlag: false,
       str: '',
-      eidt: ''
+      temp: ''
     }
   },
   watch: {
@@ -38,9 +38,9 @@ export default {
       this.toggleFlag = !this.toggleFlag;
     },
     //BodyList 로 str 과 index 보낸다
-    modifyTodo() {
+    updateBtn() {
       this.switchToggle();
-      this.edit = this.str;
+      this.temp = this.str;
     },
     updateList() {
       this.$emit('updateList', this.str, this.index);
@@ -49,7 +49,7 @@ export default {
     //ESC 눌렀을 때
     outInput() {
       this.switchToggle();
-      this.str = this.edit;
+      this.str = this.temp;
     }
   },
 };

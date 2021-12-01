@@ -1,7 +1,9 @@
 <template>
   <div>
       <TodoInput @insert="insertTodo"/>
-      <button @click="destroyAll">전체 삭제</button>
+    <div class="destroy">
+      <button class="destroyBtn" @click="destroyAll">전체 삭제</button>
+    </div>
       <body-list :todos="todos" />
   </div>
 </template>
@@ -20,14 +22,17 @@ export default {
     };
   },
   mounted() {
-    window.addEventListener('beforeunload', (event) => {
-      //  preventDefault는 호출해야하며, 기본 동작을 방지합니다.
-        event.preventDefault();
-        event.returnValue = '';
-    }
-    );
+    this.blockUnload();
   },
   methods: {
+    blockUnload() {
+      window.addEventListener('beforeunload', (event) => {
+          //  preventDefault는 호출해야하며, 기본 동작을 방지합니다.
+          event.preventDefault();
+          event.returnValue = '';
+        }
+      );
+    },
     insertTodo(todo) {
       this.todos.push(todo);
       // this.todos = [
@@ -46,5 +51,17 @@ export default {
 <style>
 li {
   margin: 10px;
+}
+.destroy {
+  position: fixed;
+  top: 20%;
+  left: 98%;
+}
+
+.destroyBtn{
+  background-color: blue;
+  color: white;
+  border: none;
+  border-radius: 10% 0% 0% 0%;
 }
 </style>
