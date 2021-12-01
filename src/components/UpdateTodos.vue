@@ -1,46 +1,40 @@
 <template>
   <div>
-    <input v-show="toggleUpdate" type="text" v-model:value="text.todo" @keypress.enter="setTodo"/>
-    <button v-show="!toggleUpdate"  @click="updateTodo">수정</button>
+    <input v-show="toggleUpdate" type="text" v-model="text" @keypress.enter="updateTodo"/>
+    <button v-show="!toggleUpdate" @click="updateTodo">수정</button>
   </div>
 </template>
-
 <script>
 export default {
   data() {
     return {
       toggleUpdate: false,
+      arr: ""
     }
   },
   props: {
-    todos: {
-      type: Array,
-      default: []
-    },
     text: {
-      type: Object
-    }
+      type: String,
+      default: ""
+    },
+  },
+  watch: {
+    //watch로 props 를 변경한다.
+    text: {
+      deep: true,
+      immediate: true,
+      handler(arr) {
+        this.arr = arr;
+      }
+    },
   },
   methods: {
+    //버튼과 input 박스를 스위치한다.
     updateTodo() {
-      console.log(this.text);
-      this.toggleUpdate = true;
-
+      this.toggleUpdate = !this.toggleUpdate;
     },
-    setTodo() {
-      if (this.text.todo !== "") {
-        //App 으로 이벤트와 todo 를 보낸다
-        this.todos.push(this.text.todo);
-        this.toggleUpdate = false;
-      }
-    }
-  }
+  },
 }
 </script>
-
 <style scoped>
-.hide{
-  display: none;
-}
-
 </style>

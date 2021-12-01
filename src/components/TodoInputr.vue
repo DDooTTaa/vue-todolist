@@ -4,14 +4,11 @@
     <input
       placeholder="할일을 입력해주세요"
       v-model="todo"
-      @keypress="setTodo"
+      @keypress.enter="setTodo"
     />
-
   </div>
 </template>
-
 <script>
-
 export default {
   data() {
     return {
@@ -19,17 +16,13 @@ export default {
     };
   },
   methods: {
-    setTodo({ keyCode }) {
-      // const { todo } = this;
-      const todo = this.todo;
-        // keyCode 값을 13으로 넣어 엔터로 이벤트를 헨들링한다.
-      if (keyCode === 13 &&todo !== "") {
+    setTodo() {
+      if (this.todo !== "") {
         //App 으로 이벤트와 todo 를 보낸다
-        this.$emit("insert",todo);
+        this.$emit("insert",this.todo);
         this.todo = "";
       }
     },
-
   }
 };
 </script>

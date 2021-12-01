@@ -29,14 +29,13 @@ export default {
   },
   methods: {
     insertTodo(todo) {
-      //this.todos.push(todo)
-      this.todos = [
-        ...this.todos, // 기존의 배열에 새로운 todo 를 추가.
-        {
-          todo // 현재 입력된 text를 todos 에 저장
-        }
-      ];
-      // console.log(this.todos);
+      this.todos.push(todo);
+      // this.todos = [
+      //   ...this.todos, // 기존의 배열에 새로운 todo 를 추가.
+      //   {
+      //     todo // 현재 입력된 text를 todos 에 저장
+      //   }
+      // ];
     },
     destroyAll() {
       this.todos = [];
@@ -44,12 +43,8 @@ export default {
   }
 };
 </script>
-
-
 <style>
-
 li {
   margin: 10px;
 }
-
 </style>

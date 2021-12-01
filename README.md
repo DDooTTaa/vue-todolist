@@ -63,6 +63,14 @@ project name -> 소문자
 
 -- vue
 
+v-bind 속성은 뷰 인스턴스의 데이터 속성을 해당 HTML 요소에 연결할 때 사용한다.
+v-on 속성은 해당 HTML 요소의 이벤트를 뷰 인스턴스의 로직과 연결할 때 사용한다.
+'v-model' 을 쓰면 양방향 바인딩이 된다.
+
+-- 공식 문서에서는 한국어 입력을 다룰 때 v-bind 와 v-on 을 직접 연결해서 사용하는 것을 권고
+https://joshua1988.github.io/web-development/vuejs/v-model-usage/
+
+
 Computed 와 Watch
 
 Watch -> 명령형 프로그램
@@ -77,3 +85,8 @@ vue의 단방향 데이터 흐름에 어긋나 사용을 지양. -> vuex 를 통
 ##코드 출처
 
 https://simplevue.gitbook.io
+
+
+##온라인 강좌
+
+https://www.inflearn.com/course/Age-of-Vuejs?inst=72986832&utm_source=blog&utm_medium=githubio&utm_campaign=captianpangyo&utm_term=banner
