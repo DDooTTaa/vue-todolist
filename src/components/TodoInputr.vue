@@ -2,7 +2,7 @@
   <div class="header">
     <h1>todos</h1>
     <input
-      placeholder="할일을 입력해주세요"
+      placeholder="Your Todo"
       v-model="todo"
       @keypress.enter="setTodo"
     />
@@ -35,14 +35,14 @@ export default {
     flex-direction: column;
   }
   h1 {
-    font-size: 50px;
+    font-size: 3.2rem;
   }
   input {
     width: 20%;
     margin-top: 3%;
     border: none;
     border-bottom: black 1px solid;
-    font-size: 1.2rem;
+    font-size: 0.9rem;
     text-align: center;
   }
   input:focus{

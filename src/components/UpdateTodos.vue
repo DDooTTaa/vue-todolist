@@ -1,7 +1,13 @@
 <template>
   <div>
-    <input v-show="toggleFlag" v-model="str" type="text" @keypress.enter="updateList" @keyup.esc="outInput"/>
-    <button v-show="!toggleFlag" @click="updateBtn">수정</button>
+    <input
+      v-show="toggleFlag"
+      v-model="str"
+      type="text"
+      @keypress.enter="updateList"
+      @keyup.esc="outInput"
+      ref="search"/>
+    <button v-show="!toggleFlag" @click="updateBtn()">수정</button>
   </div>
 </template>
 <script>
@@ -41,6 +47,7 @@ export default {
     updateBtn() {
       this.switchToggle();
       this.temp = this.str;
+      this.$refs.search.focus();
     },
     updateList() {
       this.$emit('updateList', this.str, this.index);

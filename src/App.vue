@@ -2,15 +2,22 @@
   <div>
       <TodoInput @insert="insertTodo"/>
     <div class="destroy">
-      <button class="destroyBtn" @click="destroyAll">전체 삭제</button>
+      <button class="destroyBtn" @click="destroyAll">All List Delete</button>
     </div>
       <body-list :todos="todos" />
+    <div class="example">
+      <my-component></my-component>
+    </div>
   </div>
 </template>
 
 <script>
 import TodoInput from "./components/TodoInputr";
 import BodyList from "./components/BodyList";
+import Vue from "vue"
+
+
+// Vue.component('my-component', {template: '<div>사용자 정의 컴포넌트</div>'});
 
 export default {
   components: {
@@ -55,13 +62,16 @@ li {
 .destroy {
   position: fixed;
   top: 20%;
-  left: 98%;
+  left: 95%;
 }
 
 .destroyBtn{
-  background-color: blue;
-  color: white;
-  border: none;
+  background-color: white;
+  color: black;
+  border: 2px solid gray;
   border-radius: 10% 0% 0% 0%;
+}
+.destroyBtn {
+
 }
 </style>
