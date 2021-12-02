@@ -14,12 +14,9 @@
 <script>
 import TodoInput from "./components/TodoInputr";
 import BodyList from "./components/BodyList";
-import Vue from "vue"
-
-
-// Vue.component('my-component', {template: '<div>사용자 정의 컴포넌트</div>'});
 
 export default {
+
   components: {
     TodoInput, BodyList
   },

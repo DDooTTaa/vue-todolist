@@ -57,7 +57,7 @@ project name -> 소문자
   -> v-model 에 양방향 바인딩으로 모델까지 끌고 가지 않고 엔터키가 눌릴 경우에 데이터 전달
 
 
--- 수정 누를 경우 인풋창으로 포커스
+-- 수정 누를 경우 인풋창으로 포커스 (구현중)
 
 
 -- 업데이트 인풋 박스에서 ESC 를 누르면 input 데이터가 이전으로 돌아가도록 함 (구현 완료)
@@ -70,6 +70,26 @@ project name -> 소문자
 ##Vue 정리
 
 https://kr.vuejs.org/v2/guide/components.html
+
+vue 인스턴스의 라이프사이클은
+
+beforecreate() 인스턴스가 생성되기 전이다.->
+
+created() 인스턴스가 생성되어 데이터를 사용할 수 있습니다.->
+
+beforeMount() div태그 #app의 html 코드가 생성되기 전 상태->
+
+mount()html코드가 div태그 #app에 html코드가 찍혀있는 상태->
+
+beforeupdate() 데이터가 업데이트 되기 전->
+
+updated()되고난후->
+
+beforedestroy()해당 페이지를 종료하기 전->
+
+destroy() 해당 페이지가 종료된 상태
+
+https://v3.ko.vuejs.org/api/options-lifecycle-hooks.html#beforecreate
 
 -- vue
 
