@@ -124,7 +124,7 @@ vue의 단방향 데이터 흐름에 어긋나 사용을 지양. -> vuex 를 통
 
 ##코드 출처
 
-https://simplevue.gitbook.io(참고만 함)
+https://simplevue.gitbook.io
 
 
 ##온라인 강좌
@@ -134,4 +134,3 @@ https://www.inflearn.com/course/Age-of-Vuejs?inst=72986832&utm_source=blog&utm_m
 
 ##그 외
 
-깃허브 잔디밭 심으려면 로컬에서 커밋을 날리면 안된다;;
