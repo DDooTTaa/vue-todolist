@@ -43,12 +43,12 @@ export default {
     switchToggle() {
       this.toggleFlag = !this.toggleFlag;
     },
-    //BodyList 로 str 과 index 보낸다
     updateBtn() {
       this.switchToggle();
       this.temp = this.str;
       this.$refs.search.focus();
     },
+    //BodyList 로 str 과 index 보낸다
     updateList() {
       this.$emit('updateList', this.str, this.index);
       this.switchToggle();
