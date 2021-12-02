@@ -130,3 +130,8 @@ https://simplevue.gitbook.io(참고만 함)
 ##온라인 강좌
 
 https://www.inflearn.com/course/Age-of-Vuejs?inst=72986832&utm_source=blog&utm_medium=githubio&utm_campaign=captianpangyo&utm_term=banner
+
+
+##그 외
+
+깃허브 잔디밭 심으려면 로컬에서 커밋을 날리면 안된다;;
