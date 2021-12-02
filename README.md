@@ -37,7 +37,7 @@ project name -> 소문자
   *단점: 리소스 낭비가 심하다.
 
 
-##설계와 달라진 것들 (추가 사항)
+## 설계와 달라진 것들 (추가 사항)
 
 -- setTodo 에 버튼보다 Keypress 를 이용해 엔터를 누를 경우 todo 를 추가하는 게 더 직관적이라는 생각이 들어 버튼 삭제
     -> Keypress.enter 사용
@@ -63,11 +63,11 @@ project name -> 소문자
 -- 업데이트 인풋 박스에서 ESC 를 누르면 input 데이터가 이전으로 돌아가도록 함 (구현 완료)
 
 
-##문제 상황
+## 문제 상황
 
 -- 수정 도중 딜리트 누를 경우 다음 인덱스에 인풋창이 열림 -> 수정 도중 딜리트를 없앨까?
 
-##Vue 정리
+## Vue 정리
 
 https://kr.vuejs.org/v2/guide/components.html
 
@@ -122,15 +122,15 @@ https://v3.ko.vuejs.org/guide/computed.html#computed-%E1%84%89%E1%85%A9%E1%86%A8
 $emit 은 하위 컴포넌트에서 상위 컴포넌트로 데이터를 전달,
 vue의 단방향 데이터 흐름에 어긋나 사용을 지양. -> vuex 를 통한 State Manage 필요
 
-##코드 출처
+## 코드 출처
 
 https://simplevue.gitbook.io
 
 
-##온라인 강좌
+## 온라인 강좌
 
 https://www.inflearn.com/course/Age-of-Vuejs?inst=72986832&utm_source=blog&utm_medium=githubio&utm_campaign=captianpangyo&utm_term=banner
 
 
-##그 외
+## 그 외
 
