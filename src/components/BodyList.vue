@@ -32,7 +32,7 @@ export default {
   watch: {
     todos:{
       //deep = todos 배열 내부가 변경될 수 있도록 한다
-      deep: true,
+      // deep: true,
       handler(arr){
        this.arr = arr;
       }
@@ -40,12 +40,12 @@ export default {
   },
   methods: {
     deleteTodo(index) {
-       //index 위치의 원소 하나 삭제 * 1 없으면 뒤를 다 삭제한다.
+       //index 위치의 원소 하나 삭제.
       this.arr.splice(index, 1);
     },
     TodoConvert(text, index) {
           if(this.arr[index] !== text) {
-            //index 위치의 원소 하나 삭제 * 1 없으면 뒤를 다 삭제한다.
+            //index 위치의 text 추가하고 원소 하나 삭제.
             this.arr.splice(index, 1, text);
       }
     }
