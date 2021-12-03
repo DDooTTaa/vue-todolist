@@ -1,3 +1,5 @@
+
+
 ## Vue 정리
 
 https://kr.vuejs.org/v2/guide/components.html
@@ -55,10 +57,10 @@ https://vuejs.org/v2/guide/syntax.html#v-bind-Shorthand
 
 상위 컴포넌트와 하위 컴포넌트의 데이터 전달 방법 props 와 $emit,
 $emit 은 하위 컴포넌트에서 상위 컴포넌트로 데이터를 전달,
-vue의 단방향 데이터 흐름에 어긋나 사용을 지양. -> vuex 를 통한 State Manage 필요
+vue의 단방향 데이터 흐름에 어긋나 사용을 지양.
 
 ---
-모든 props는 하위 속성과 상위 속성 사이의 단방향 바인딩이어야 함.
+***모든 props는 하위 속성과 상위 속성 사이의 단방향 바인딩이어야 함.***
 
 ---
  상위 속성이 업데이트되면 하위로 흐르게 만들어 하위 컴포넌트가 실수로 부모의 상태를 변경하여 앱의 데이터 흐름을 추론하기 어렵게 만드는 것을 방지
@@ -99,11 +101,12 @@ https://v3.ko.vuejs.org/guide/computed.html#computed-%E1%84%89%E1%85%A9%E1%86%A8
 
 ## 그 외 알게 된 것
 
-* Localstorage 를 이용한 방법 - 전역 state를 사용하는 것처럼, Localstorage에 키 벨류 값을 뿌린 후 다른 컴포넌트에서 get으로 가져오는 방법
-  -장점: 저장이 가능하다
-  -단점: 리소스 낭비가 심하다.
+Localstorage 를 이용한 방법 - 전역 state를 사용하는 것처럼, Localstorage에 키 벨류 값을 뿌린 후 다른 컴포넌트에서 get으로 가져오는 방법
+* -장점: 저장이 가능하다
 
-* vue 3 -> vue 2
+* -단점: 리소스 낭비가 심하다.
+
+### vue 3 -> vue 2
 
 vue --version
 npm r -g @vue/cli
@@ -121,13 +124,6 @@ browserify-simple : 단순히 browserify와 vuetify를 포함하는 template. �
 simple : 가장단순하게 html파일에 vue 설정만 가짐
 
 project name -> 소문자
-
-++ Array 를 children 에서 props 로 받았을 때 Array 배열 자체에 대한 수정은 막지만
-  배열 내부가 수정이 가능해져 props 에 변화
-
--> Array의 요소로 접근 시 todos 의 값은 바뀌지 않고 Update 의 Input 값만 바뀐 상태로 저장됨
--> emit 으로 부모 컴포넌트의 전달, v-model를 v-bind와 v-on으로 수정 후 작업 event.target 으로 시도해봄
-
 
 ##  설계와 달라진 것들 (추가 사항)
 
@@ -155,17 +151,17 @@ project name -> 소문자
 
 ## Code Convention
 
--[x] CamelCase 를 사용한다.
--[x] Function 선언은 다음과 같이 한다.중괄호 뒤에 띄어쓰기 testFunction() {}
--[x] 조건문 선언은 다음과 같이 한다. 대괄호 시작과 끝에 띄어쓰기 if(true) {} else if() {} else {}
--[x] 문자열은 작은 따옴표를 쓴다. const test = ‘test String’;
--[x] 코드의 끝은 항상 세미콜론을 입력한다.
--[x] 변수를 재 할당 하는경우 let 을 사용하고 그 외에는 const를 사용한다.(var 사용금지)
--[x] 상수의 변수명은 대문자를 사용한다.
--[x] 변수 선언은 한줄에 하나씩만 한다.( let test1=a, test2=b 이렇게 쓰면 안됨)
--[x] 변수 대입문은 띄어쓰기를 사용한다.( let test = 100;)
--[x] 엔터키를 사용한 공백은 한줄 이상 쓰지 않는다.
--[x] 주석을 생활화 한다.
+-[x]  CamelCase 를 사용한다.
+-[x]  Function 선언은 다음과 같이 한다.중괄호 뒤에 띄어쓰기 testFunction() {}
+-[x]  조건문 선언은 다음과 같이 한다. 대괄호 시작과 끝에 띄어쓰기 if(true) {} else if() {} else {}
+-[x]  문자열은 작은 따옴표를 쓴다. const test = ‘test String’;
+-[x]  코드의 끝은 항상 세미콜론을 입력한다.
+-[x]  변수를 재 할당 하는경우 let 을 사용하고 그 외에는 const를 사용한다.(var 사용금지)
+-[x]  상수의 변수명은 대문자를 사용한다.
+-[x]  변수 선언은 한줄에 하나씩만 한다.( let test1=a, test2=b 이렇게 쓰면 안됨)
+-[x]  변수 대입문은 띄어쓰기를 사용한다.( let test = 100;)
+-[x]  엔터키를 사용한 공백은 한줄 이상 쓰지 않는다.
+-[x]  주석을 생활화 한다.
 
 
 ## 구현 못 한 부분
