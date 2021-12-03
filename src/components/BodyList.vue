@@ -2,7 +2,7 @@
   <ul class="todo-section">
     <li class="todo-list" v-for="(text, index) in todos" :key="index">
       <label>{{ text }}</label>
-      <update-todos v-bind:text="text" v-bind:index="index" @updateList="updateEmit"/>
+      <update-todos v-bind:text="text" v-bind:index="index" @update="updateEmit"/>
       <button @click="deleteEmit">X</button>
     </li>
     <button class="destroyBtn" @click="destroyEmit">All List Delete</button>

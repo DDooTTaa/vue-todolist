@@ -10,14 +10,8 @@
 <script>
 export default {
   props: {
-    text: {
-      type: String,
-      default: ''
-    },
-    index: {
-      type: Number,
-      default: null
-    },
+    text: String,
+    index: Number,
   },
   data() {
     return {
@@ -31,13 +25,14 @@ export default {
     switchToggle() {
       this.toggleFlag = !this.toggleFlag;
     },
+    //버튼이 눌렸을 때 input 박스가 나오도록 한다
     updateBtn() {
       this.switchToggle();
       this.temp = this.str;
     },
-    //BodyList 로 str 과 index 보낸다 -> App 으로 다시 올린다
+    //엔터를 누르면 BodyList 로 str 과 index 보낸다 -> App 으로 다시 올린다
     updateList() {
-      this.$emit('updateList', this.str, this.index);
+      this.$emit('update', this.str, this.index);
       this.switchToggle();
     },
     //ESC 눌렀을 때 이전 입력값을 가져온다.
