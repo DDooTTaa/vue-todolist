@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <todo-input @insert="insertTodo"/>
-    <body-list v-bind:todos="todos" @destroy="destroyAll" @update="todoUpdate" @delete="deleteTodo"/>
+    <todo-input @insert="createTodos"/>
+    <body-list v-bind:todos="todos" @update="updateTodos" @delete="deleteTodos" @destroy="destroyAll"/>
   </div>
 </template>
 <script>
@@ -11,14 +11,14 @@ import BodyList from "./components/BodyList";
 export default {
   components: {
     TodoInput,
-    BodyList
+    BodyList,
   },
   data() {
     return {
       todos: [],
     };
   },
-  mounted() {
+  created() {
     this.blockUnload();
   },
   methods: {
@@ -26,28 +26,28 @@ export default {
     blockUnload() {
       window.addEventListener('beforeunload', (event) => {
           event.preventDefault();
-        }
+          event.returnValue = "";
+        },
       );
     },
     // todos 에 push 함
-    insertTodo(todo) {
+    createTodos(todo) {
       this.todos.push(todo);
-      console.log(this.todos);
-    },
-    // 전체에 빈 배열을 할당
-    destroyAll() {
-      this.todos = [];
     },
     // todos 를 업데이트함
-    todoUpdate(text, index) {
+    updateTodos(text, index) {
       //index 위치의 text 추가하고 원소 하나 삭제.
       this.todos.splice(index, 1, text);
     },
-    // todos 배열의 원소를 지움
-    deleteTodo(index) {
+    // todos 배열의 선택된 원소를 지움
+    deleteTodos(index) {
       this.todos.splice(index, 1);
-    }
-  }
+    },
+    // todos 에 빈 배열을 할당
+    destroyAll() {
+      this.todos = [];
+    },
+  },
 };
 </script>
 <style>

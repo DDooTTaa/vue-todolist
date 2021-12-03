@@ -108,9 +108,11 @@ Localstorage 를 이용한 방법 - 전역 state를 사용하는 것처럼, Loca
 
 ### vue 3 -> vue 2
 
+````
 vue --version
 npm r -g @vue/cli
 npm i -g vue-cli
+````
 
 vue2 는 프로젝트명 지을 때
 vue init (template) (project name)

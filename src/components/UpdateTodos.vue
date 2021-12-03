@@ -1,7 +1,7 @@
 <template>
   <div>
     <input
-      type="text" v-show="toggleFlag" v-model="str" @keypress.enter="updateList" @keyup.esc="outInput"
+      type="text" v-show="toggleFlag" v-model="str" @keypress.enter="updateList" @keyup.esc="outInputBox"
     />
     <button v-show="!toggleFlag" @click="updateBtn">수정</button>
   </div>
@@ -36,7 +36,7 @@ export default {
       this.switchToggle();
     },
     //ESC 눌렀을 때 이전 입력값을 가져온다.
-    outInput() {
+    outInputBox() {
       this.switchToggle();
       this.str = this.temp;
     },
