@@ -1,15 +1,12 @@
 <template>
   <div>
     <input
-      v-show="toggleFlag"
-      v-model="str"
-      type="text"
-      @keypress.enter="updateList"
-      @keyup.esc="outInput"
-      ref="search"/>
-    <button v-show="!toggleFlag" @click="updateBtn()">수정</button>
+      type="text" v-show="toggleFlag" v-model="str" @keypress.enter="updateList" @keyup.esc="outInput"
+    />
+    <button v-show="!toggleFlag" @click="updateBtn">수정</button>
   </div>
 </template>
+
 <script>
 export default {
   props: {
@@ -20,23 +17,14 @@ export default {
     index: {
       type: Number,
       default: null
-    }
+    },
   },
   data() {
     return {
       toggleFlag: false,
-      str: '',
-      temp: ''
-    }
-  },
-  watch: {
-    //watch로 props 를 변경한다.
-    text: {
-      immediate: true,
-      handler(str) {
-        this.str = str;
-      }
-    },
+      str: this.text,
+      temp: '',
+    };
   },
   methods: {
     //버튼과 input 박스를 스위치한다.
@@ -46,20 +34,20 @@ export default {
     updateBtn() {
       this.switchToggle();
       this.temp = this.str;
-      this.$refs.search.focus();
     },
-    //BodyList 로 str 과 index 보낸다
+    //BodyList 로 str 과 index 보낸다 -> App 으로 다시 올린다
     updateList() {
       this.$emit('updateList', this.str, this.index);
       this.switchToggle();
     },
-    //ESC 눌렀을 때
+    //ESC 눌렀을 때 이전 입력값을 가져온다.
     outInput() {
       this.switchToggle();
       this.str = this.temp;
-    }
+    },
   },
 };
 </script>
+
 <style scoped>
 </style>

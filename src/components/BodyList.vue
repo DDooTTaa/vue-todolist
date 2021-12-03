@@ -1,73 +1,53 @@
 <template>
-    <ul class="Body">
-      <li
-        class="todoList"
-        v-for="(text, index) in todos"
-        :key="index"
-      >
-          <label>{{ arr[index] }}</label>
-        <UpdateTodos :text="text" :index="index" @updateList="TodoConvert"/>
-          <button @click="deleteTodo(index)">X</button>
-      </li>
-    </ul>
+  <ul class="todo-section">
+    <li class="todo-list" v-for="(text, index) in todos" :key="index">
+      <label>{{ text }}</label>
+      <update-todos v-bind:text="text" v-bind:index="index" @updateList="updateEmit"/>
+      <button @click="deleteEmit">X</button>
+    </li>
+    <button class="destroyBtn" @click="destroyEmit">All List Delete</button>
+  </ul>
 </template>
-
 <script>
 import UpdateTodos from "./UpdateTodos";
 
 export default {
-  components: {UpdateTodos},
-  // props 로 가져온 걸 수정하면 안됨 -> watch
-  data() {
-    return {
-      arr: [],
-    }
+  components: {
+    UpdateTodos
   },
   props: {
-    todos: {
-      type: Array,
-      default: []
-    }
-  },
-  watch: {
-    todos:{
-      //deep = todos 배열 내부가 변경될 수 있도록 한다
-      // deep: true,
-      handler(arr){
-       this.arr = arr;
-      }
-    }
+    todos: Array,
   },
   methods: {
-    deleteTodo(index) {
-       //index 위치의 원소 하나 삭제.
-      this.arr.splice(index, 1);
+    deleteEmit(index) {
+      this.$emit('delete', index);
     },
-    TodoConvert(text, index) {
-          if(this.arr[index] !== text) {
-            //index 위치의 text 추가하고 원소 하나 삭제.
-            this.arr.splice(index, 1, text);
-      }
+    updateEmit(text, index) {
+      this.$emit('update', text, index);
+    },
+    destroyEmit() {
+      this.$emit('destroy');
     }
   }
 }
 </script>
-
 <style scoped>
-  li {
-    list-style:none;
-    padding-bottom: 1rem;
-  }
-  .todoList{
-    display: flex;
-  }
-  .Body{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  label {
-    margin: 0px 2rem 0px 0px;
-  }
+.todo-list {
+  display: flex;
+}
+.todo-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.destroyBtn {
+  position: fixed;
+  top: 20%;
+  left: 95%;
+  background-color: white;
+  color: black;
+  border: 2px solid gray;
+  border-radius: 10% 0% 0% 0%;
+}
 </style>

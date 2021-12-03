@@ -1,74 +1,62 @@
 <template>
-  <div>
-      <TodoInput @insert="insertTodo"/>
-    <div class="destroy">
-      <button class="destroyBtn" @click="destroyAll">All List Delete</button>
-    </div>
-      <body-list :todos="todos" />
-    <div class="example">
-      <my-component></my-component>
-    </div>
+  <div id="app">
+    <todo-input @insert="insertTodo"/>
+    <body-list v-bind:todos="todos" @destroy="destroyAll" @update="todoUpdate" @delete="deleteTodo"/>
   </div>
 </template>
-
 <script>
-import TodoInput from "./components/TodoInputr";
+import TodoInput from "./components/TodoInput";
 import BodyList from "./components/BodyList";
 
 export default {
-
   components: {
-    TodoInput, BodyList
+    TodoInput,
+    BodyList
   },
   data() {
     return {
-      todos: []
+      todos: [],
     };
   },
   mounted() {
     this.blockUnload();
   },
   methods: {
+    // 뒤로가기나 새로고침시 기본 동작을 방지
     blockUnload() {
       window.addEventListener('beforeunload', (event) => {
-          //  preventDefault는 호출해야하며, 기본 동작을 방지합니다.
           event.preventDefault();
-          event.returnValue = '';
         }
       );
     },
+    // todos 에 push 함
     insertTodo(todo) {
       this.todos.push(todo);
-      // this.todos = [
-      //   ...this.todos, // 기존의 배열에 새로운 todo 를 추가.
-      //   {
-      //     todo // 현재 입력된 text를 todos 에 저장
-      //   }
-      // ];
+      console.log(this.todos);
     },
+    // 전체에 빈 배열을 할당
     destroyAll() {
       this.todos = [];
     },
+    // todos 를 업데이트함
+    todoUpdate(text, index) {
+      //index 위치의 text 추가하고 원소 하나 삭제.
+      this.todos.splice(index, 1, text);
+    },
+    // todos 배열의 원소를 지움
+    deleteTodo(index) {
+      this.todos.splice(index, 1);
+    }
   }
 };
 </script>
 <style>
 li {
   margin: 10px;
+  list-style: none;
+  padding-bottom: 1rem;
 }
-.destroy {
-  position: fixed;
-  top: 20%;
-  left: 95%;
-}
-
-.destroyBtn{
-  background-color: white;
-  color: black;
-  border: 2px solid gray;
-  border-radius: 10% 0% 0% 0%;
-}
-.destroyBtn {
-
+label {
+  margin: 0px 2rem 0px 0px;
 }
 </style>
