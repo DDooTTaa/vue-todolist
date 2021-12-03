@@ -1,3 +1,4 @@
+
 ```bash
 # install dependencies
 npm install
@@ -11,54 +12,62 @@ npm run build
 
 vue3 에서 vue2 로 바꾸는 방법
 
-vue --version npm r -g @vue/cli npm i -g vue-cli
+vue --version
+npm r -g @vue/cli
+npm i -g vue-cli
 
-vue2 는 프로젝트명 지을 때 vue init (template) (project name)
+vue2 는 프로젝트명 지을 때
+vue init (template) (project name)
 
 [template 종류]
 
 webpack : 모듈번들러를 hot-reload, linting, test, CSS추출기능 등 대부분의 기능을 갖추고 있는 webpack으로 사용하고, vue-loader를 포함하는 template
-webpack-simple : 단순히 webpack과 vue-loader를 포함하는 template. 간단히 프로토 타입을 만들때 사용 browserify : 모듈번들러를 hot-reload, linting,
-test,CSS추출기능 등 대부분의 기능을 갖추고 있는 browserify로 사용하고 vuetify를 포함하는 template browserify-simple : 단순히 browserify와 vuetify를 포함하는
-template. 간단히 프로토 타입을 만들때 사용 simple : 가장단순하게 html파일에 vue 설정만 가짐
+webpack-simple : 단순히 webpack과 vue-loader를 포함하는 template. 간단히 프로토 타입을 만들때 사용
+browserify : 모듈번들러를 hot-reload, linting, test,CSS추출기능 등 대부분의 기능을 갖추고 있는 browserify로 사용하고 vuetify를 포함하는 template
+browserify-simple : 단순히 browserify와 vuetify를 포함하는 template. 간단히 프로토 타입을 만들때 사용
+simple : 가장단순하게 html파일에 vue 설정만 가짐
 
 project name -> 소문자
 
-## 설계 히스토리
 
---Localstorage 를 이용한 방법 - 전역 state를 사용하는 것처럼, Localstorage에 키 벨류 값을 뿌린 후 다른 컴포넌트에서 get으로 가져오는 방법
-*장점: 저장이 가능하다
-*단점: 리소스 낭비가 심하다.
+알게 된 것
 
--- setTodo 에 버튼보다 Keypress 를 이용해 엔터를 누를 경우 todo 를 추가하는 게 더 직관적이라는 생각이 들어 버튼 삭제 -> Keypress.enter 사용
+1. Localstorage 를 이용한 방법 - 전역 state를 사용하는 것처럼, Localstorage에 키 벨류 값을 뿌린 후 다른 컴포넌트에서 get으로 가져오는 방법
+  *장점: 저장이 가능하다
+  *단점: 리소스 낭비가 심하다.
 
--- destroyAll() 메소드와 insertTodo() 메소드를 Header 에서 정의하는 것보다 App 에서 정의하는 게 괜찮다 판단 ※ todos 배열을 Bodylist 변수에 전달해야 하기 때문
 
---Delete 컴포넌트는 변수를 통해 지우지 않고 event.target.parentElement.remove() 를 통해 HTML 상위 태그를 이용해서 지움 -> event target 안 쓰고
-this.arr.splice(index, 1) 로 바꿈. BodyList에 저장 -> Delete는 컴포넌트가 아닌 메소드이기에 BodyList 에 추가
+##설계와 달라진 것들 (추가 사항)
+
+-- setTodo 에 버튼보다 Keypress 를 이용해 엔터를 누를 경우 todo 를 추가하는 게 더 직관적이라는 생각이 들어 버튼 삭제
+    -> Keypress.enter 사용
+
+-- destroyAll() 메소드와 insertTodo() 메소드를 Header 에서 정의하는 것보다 App 에서 정의하는 게 괜찮다 판단
+ ※ todos 배열을 Bodylist 변수에 전달해야 하기 때문
+
+--Delete 컴포넌트는 변수를 통해 지우지 않고 event.target.parentElement.remove() 를 통해 HTML 상위 태그를 이용해서 지움
+    -> event target 안 쓰고 this.arr.splice(index, 1) 로 바꿈. BodyList에 저장
+    -> Delete는 컴포넌트가 아닌 메소드이기에 BodyList 에 추가
 
 --객체로 선언된 todos를 배열로 다시 바꿈
 
 -- props를 바꾸지 않고 watch로 데이터 관리 watch 는 후술
 
 --업데이트 인풋 박스가 바뀔 때마다 라벨도 따라 바뀌는 문제 해결 (Ref.현석)
--> v-model 에 양방향 바인딩으로 모델까지 끌고 가지 않고 엔터키가 눌릴 경우에 데이터 전달
+  -> v-model 에 양방향 바인딩으로 모델까지 끌고 가지 않고 엔터키가 눌릴 경우에 데이터 전달
+
+
+-- 수정 누를 경우 인풋창으로 포커스 (구현중)
+
 
 -- 업데이트 인풋 박스에서 ESC 를 누르면 input 데이터가 이전으로 돌아가도록 함 (구현 완료)
 
--- BodyList에서 todos 를 watch 했는데 props 에 있는 todos 가 바뀌는 에러가 있다.
- -> UpdateTodos랑 같은 방법으로 하는데 왜 BodyList 에선 참조될까?
-(질문 결과 다른 방법으로 todos를 참조하라는 답을 얻었다)
- -> computed 를 이용해서 해보았지만 결과는 같았다. 어떻게 todos 에 값이 들어가는거지?
-    ※ todos 배열을 watch 하기 때문에 todos 자체가 변하지 않는 이상 바인딩이 되는 것이었다. deep: true 도 마찬가지
-        ->
 
-https://v3.ko.vuejs.org/guide/change-detection.html
-## Issue
+##문제 상황
 
 -- 수정 도중 딜리트 누를 경우 다음 인덱스에 인풋창이 열림 -> 수정 도중 딜리트를 없앨까?
 
-## Vue 정리
+##Vue 정리
 
 https://kr.vuejs.org/v2/guide/components.html
 
@@ -84,7 +93,8 @@ https://v3.ko.vuejs.org/api/options-lifecycle-hooks.html#beforecreate
 
 -- vue
 
-v-bind 속성은 뷰 인스턴스의 데이터 속성을 해당 HTML 요소에 연결할 때 사용한다. v-on 속성은 해당 HTML 요소의 이벤트를 뷰 인스턴스의 로직과 연결할 때 사용한다.
+v-bind 속성은 뷰 인스턴스의 데이터 속성을 해당 HTML 요소에 연결할 때 사용한다.
+v-on 속성은 해당 HTML 요소의 이벤트를 뷰 인스턴스의 로직과 연결할 때 사용한다.
 'v-model' 을 쓰면 양방향 바인딩이 된다.
 
 -- 공식 문서에서는 한국어 입력을 다룰 때 v-bind 와 v-on 을 연결해서 사용하는 것을 권고
@@ -96,39 +106,31 @@ Object로 받았을 때 todos 바꾸기
 
 Array로 받았을 때 todos 바꾸기
 
--> Array의 요소로 접근 시 todos 의 값은 바뀌지 않고 Update 의 Input 값만 바뀐 상태로 저장됨 -> emit 으로 부모 컴포넌트의 전달, v-model를 v-bind와 v-on으로 수정 후
-작업 event.target 으로 시도해봄
+-> Array의 요소로 접근 시 todos 의 값은 바뀌지 않고 Update 의 Input 값만 바뀐 상태로 저장됨
+-> emit 으로 부모 컴포넌트의 전달, v-model를 v-bind와 v-on으로 수정 후 작업 event.target 으로 시도해봄
+
 
 Computed 와 Watch
 
-Watch -> 명령형 프로그램 Computed -> 선언형 프로그램
+Watch -> 명령형 프로그램
+Computed -> 선언형 프로그램
 
 https://v3.ko.vuejs.org/guide/computed.html#computed-%E1%84%89%E1%85%A9%E1%86%A8%E1%84%89%E1%85%A5%E1%86%BC%E1%84%8B%E1%85%B4-setter
 
-상위 컴포넌트와 하위 컴포넌트의 데이터 전달 방법 props 와 $emit, $emit 은 하위 컴포넌트에서 상위 컴포넌트로 데이터를 전달, vue의 단방향 데이터 흐름에 어긋나 사용을 지양. -> vuex 를 통한
-State Manage 필요
 
-## 도움받은 곳
+상위 컴포넌트와 하위 컴포넌트의 데이터 전달 방법 props 와 $emit,
+$emit 은 하위 컴포넌트에서 상위 컴포넌트로 데이터를 전달,
+vue의 단방향 데이터 흐름에 어긋나 사용을 지양. -> vuex 를 통한 State Manage 필요
+
+##코드 출처
 
 https://simplevue.gitbook.io
 
-## 온라인 강좌
+
+##온라인 강좌
 
 https://www.inflearn.com/course/Age-of-Vuejs?inst=72986832&utm_source=blog&utm_medium=githubio&utm_campaign=captianpangyo&utm_term=banner
 
-## 그 외
 
-CTRL + ALT + L 자동 들여쓰기
+##그 외
 
-## Conde Convention
-
-- [x] 변수는 CamelCase 를 사용한다.
-- [x] Function 선언은 다음과 같이 한다.중괄호 뒤에 띄어쓰기 testFunction() {}
-- [x] 조건문 선언은 다음과 같이 한다. 대괄호 시작과 끝에 띄어쓰기 if(true) {} else if() {} else {}
-- 문자열은 작은 따옴표를 쓴다. const test = ‘test String’;
-- 코드의 끝은 항상 세미콜론을 입력한다.
-- [x] 변수를 재 할당 하는경우 let 을 사용하고 그 외에는 const를 사용한다.(var 사용금지)
-- [x] 상수의 변수명은 대문자를 사용한다.
-- 변수 선언은 한줄에 하나씩만 한다.( let test1=a, test2=b 이렇게 쓰면 안됨)
-- 변수 대입문은 띄어쓰기를 사용한다.( let test = 100;)
-- 엔터키를 사용한 공백은 한줄 이상 쓰지 않는다. 주석을 생활화 한다.
