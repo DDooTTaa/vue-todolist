@@ -9,18 +9,18 @@
 export default {
   data() {
     return {
-      todo: ""
+      todo: ''
     };
   },
   methods: {
     //App 으로 이벤트와 입력된 text 를 보낸다
     setTodo() {
-      if (this.todo !== "") {
-        this.$emit("insert", this.todo);
-        this.todo = "";
-      }
+      if (this.todo !== '') {
+        this.$emit('insert', this.todo);
+        this.todo = '';
+      };
     },
-  }
+  },
 };
 </script>
 <style scoped>

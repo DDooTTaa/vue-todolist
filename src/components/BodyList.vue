@@ -9,7 +9,7 @@
   </ul>
 </template>
 <script>
-import UpdateTodos from "./UpdateTodos";
+import UpdateTodos from './UpdateTodos';
 
 export default {
   components: {
@@ -22,14 +22,14 @@ export default {
     deleteEmit(index) {
       this.$emit('delete', index);
     },
-    updateEmit(text, index) {
-      this.$emit('update', text, index);
+    updateEmit(str, index) {
+      this.$emit('update', str, index);
     },
     destroyEmit() {
       this.$emit('destroy');
-    }
-  }
-}
+    },
+  },
+};
 </script>
 <style scoped>
 .todo-list {

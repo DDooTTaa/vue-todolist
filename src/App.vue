@@ -5,8 +5,8 @@
   </div>
 </template>
 <script>
-import TodoInput from "./components/TodoInput";
-import BodyList from "./components/BodyList";
+import TodoInput from './components/TodoInput';
+import BodyList from './components/BodyList';
 
 export default {
   components: {
