@@ -170,7 +170,7 @@ v-show 와 focus를 같이 사용할 경우 input box로 focus가 되지 않는�
 style Checklist
 
 - [x]  CamelCase 를 사용한다.
-- [x]  Function 선언은 다음과 같이 한다.중괄호 뒤에 띄어쓰기 testFunction() {}
+- [x]  Function 선언은 다음과 같이 한다. 소괄호 뒤에 띄어쓰기 testFunction() {}
 - [x]  조건문 선언은 다음과 같이 한다. 중괄호 시작과 끝에 띄어쓰기 if(true) {} else if() {} else {}
 - [x]  문자열은 작은 따옴표를 쓴다. const test = ‘test String’;
 - [x]  코드의 끝은 항상 세미콜론을 입력한다.
