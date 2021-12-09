@@ -26,7 +26,7 @@ export default {
     blockUnload() {
       window.addEventListener('beforeunload', (event) => {
           event.preventDefault();
-          event.returnValue = "";
+          event.returnValue = '';
         },
       );
     },
