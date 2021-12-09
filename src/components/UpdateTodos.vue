@@ -1,7 +1,7 @@
 <template>
   <div>
     <input
-      type="text" v-show="toggleFlag" v-model="str" @keypress.enter="updateList" @keyup.esc="outInputBox"
+      type="text" v-model="str" @keyup.enter="updateList" @keyup.esc="outInputBox" v-show="toggleFlag"
     />
     <button v-show="!toggleFlag" @click="updateBtn">수정</button>
   </div>

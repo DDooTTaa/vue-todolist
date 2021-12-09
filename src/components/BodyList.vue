@@ -10,7 +10,6 @@
 </template>
 <script>
 import UpdateTodos from './UpdateTodos';
-
 export default {
   components: {
     UpdateTodos

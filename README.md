@@ -135,6 +135,12 @@ simple : 가장단순하게 html파일에 vue 설정만 가짐
 
 + project name -> 소문자
 
+
+### v-show , focus
+
+v-show 와 focus를 같이 사용할 경우 input box로 focus가 되지 않는다.
+
+
 ##  설계와 달라진 것들 (추가 사항)
 
 -- setTodo 에 버튼보다 Keypress 를 이용해 엔터를 누를 경우 todo 를 추가하는 게 더 직관적이라는 생각이 들어 버튼 삭제
@@ -165,14 +171,14 @@ style Checklist
 
 - [x]  CamelCase 를 사용한다.
 - [x]  Function 선언은 다음과 같이 한다.중괄호 뒤에 띄어쓰기 testFunction() {}
-- [x]  조건문 선언은 다음과 같이 한다. 대괄호 시작과 끝에 띄어쓰기 if(true) {} else if() {} else {}
+- [x]  조건문 선언은 다음과 같이 한다. 중괄호 시작과 끝에 띄어쓰기 if(true) {} else if() {} else {}
 - [x]  문자열은 작은 따옴표를 쓴다. const test = ‘test String’;
 - [x]  코드의 끝은 항상 세미콜론을 입력한다.
 - [x]  변수를 재 할당 하는경우 let 을 사용하고 그 외에는 const를 사용한다.(var 사용금지)
 - [x]  상수의 변수명은 대문자를 사용한다.
 - [x]  변수 선언은 한줄에 하나씩만 한다.( let test1=a, test2=b 이렇게 쓰면 안됨)
 - [x]  변수 대입문은 띄어쓰기를 사용한다.( let test = 100;)
-- [x]  엔터키를 사용한 공백은 한줄 이상 쓰지 않는다. **(질문)**
+- [x]  엔터키를 사용한 공백은 한줄을 초과해서 쓰지 않는다.
 - [x]  주석을 생활화 한다.
 
 ## 구현 못 한 부분
@@ -182,6 +188,7 @@ style Checklist
 
 -- 수정 누를 경우 인풋창으로 포커스
  -> ref 를 사용하면 가능할 것 같음
+   -> v-show 와 ref 를 같이 사용할 경우 focus 가 되지 않는다.
 
 ## 온라인 강좌
 
