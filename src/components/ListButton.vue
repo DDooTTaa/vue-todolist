@@ -2,14 +2,14 @@
   <ul class="todo-section">
     <li class="todo-list" v-for="(text, index) in todos" :key="index">
       <label>{{ text }}</label>
-      <update-todos v-bind:text="text" v-bind:index="index" @update="updateEmit"/>
+      <update-todos :text="text" :index="index" @update="updateEmit"/>
       <button @click="deleteEmit">X</button>
     </li>
-    <button class="destroyBtn" @click="destroyEmit">All List Delete</button>
+    <button class="destroyButton" @click="destroyEmit">All List Delete</button>
   </ul>
 </template>
 <script>
-import UpdateTodos from './UpdateTodos';
+import UpdateTodos from './TodoController';
 export default {
   components: {
     UpdateTodos
@@ -40,13 +40,12 @@ export default {
   justify-content: center;
   align-items: center;
 }
-.destroyBtn {
+.destroyButton {
   position: fixed;
   top: 20%;
   left: 95%;
   background-color: white;
   color: black;
   border: 2px solid gray;
-  border-radius: 10% 0% 0% 0%;
 }
 </style>

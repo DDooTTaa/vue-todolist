@@ -98,6 +98,7 @@ computed: {
 
 https://v3.ko.vuejs.org/guide/computed.html#computed-%E1%84%89%E1%85%A9%E1%86%A8%E1%84%89%E1%85%A5%E1%86%BC%E1%84%8B%E1%85%B4-setter
 
+할당 연산자에 논리 연산자를 사용하지 않는다. ex) test = !test
 
 ## 그 외 알게 된 것
 
@@ -165,6 +166,46 @@ v-show 와 focus를 같이 사용할 경우 input box로 focus가 되지 않는�
 
 --
 
+## 4차 수정
+
+### 네이밍 변경
+- str -> saveText
+- temp -> emptyText
+- BodyList -> ListButton
+- UpdateTodos -> TodoController
+
+### toggleFlag = !toggleFlag 수정
+
+      if (this.toggleFlag) {
+        this.toggleFlag = false;
+      } else {
+        this.toggleFlag = true;
+      }
+
+### arr[index] 가 아닌 text 를 쓰는 이유
+
+- App.vue 에서 todos 에 데이터를 관리하는데 ListButton 에서 text 를 watch 해서 arr[index] 를 사용하면 의미없는
+
+### 부모 컴포넌트에서 자식 컴포넌트에 데이터에 할당
+####ex)
+```
+  props: ['initialCounter'],
+  data() {
+    return {
+      counter: this.initialCounter
+    }
+  }
+```
+- Computed 를 사용해 데이터를 할당할 생각이었지만, Computed 는 반응형 getter 이기 때문에 props 처럼 값의 변경을 용납하지 않는다.
+그래서 props를 데이터에 할당하고, 그 데이터가 변수라면 computed 를 쓰면 안된다고 판단했다.
+
+- watch 를 사용해 text 의 handler 에서 (데이터)saveText 에 (props)text 값을 할당했다. (컴포넌트가 생성될 때 값을 저장하기 위해 immediate: true 를 사용했다)
+
+
+###스타일 가이드 수정
+
+### v-bind 와 v-on 통일
+
 ## Code Convention
 
 style Checklist
@@ -180,6 +221,7 @@ style Checklist
 - [x]  변수 대입문은 띄어쓰기를 사용한다.( let test = 100;)
 - [x]  엔터키를 사용한 공백은 한줄을 초과해서 쓰지 않는다.
 - [x]  주석을 생활화 한다.
+- [x]  할당 연산을 할 때 논리 연산자를 사용하지 않는다. ex) test = !test
 
 ## 구현 못 한 부분
 

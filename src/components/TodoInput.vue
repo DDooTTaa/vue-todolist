@@ -18,10 +18,12 @@ export default {
       if(this.todo !== '') {
         this.$emit('insert', this.todo);
         this.todo = '';
-      };
+      }
     },
   },
 };
+
+
 </script>
 <style scoped>
 .header {

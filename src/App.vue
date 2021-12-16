@@ -6,7 +6,7 @@
 </template>
 <script>
 import TodoInput from './components/TodoInput';
-import BodyList from './components/BodyList';
+import BodyList from './components/ListButton';
 
 export default {
   components: {
@@ -57,6 +57,6 @@ li {
   padding-bottom: 1rem;
 }
 label {
-  margin: 0px 2rem 0px 0px;
+  margin: 0 2rem 0 0;
 }
 </style>
